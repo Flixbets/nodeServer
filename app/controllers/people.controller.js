@@ -4,6 +4,7 @@ const setstatus = db.setstatus;
 const multer = require('multer')
 const path = require('path')
 const fs = require('fs')
+const sharp = require('sharp');
 
 
 // import multer from 'multer'
@@ -46,6 +47,7 @@ const fileFilter = (req, file, cb) => {
       cb(null, false); // else fails
     }
   }
+
 };
 
 var upload_test = multer(
@@ -53,7 +55,7 @@ var upload_test = multer(
     storage: fileStorage,
     limits:
     {
-      fileSize: '50mb'
+      fileSize: '1048576'
     },
     fileFilter: fileFilter
   }
@@ -173,10 +175,28 @@ exports.createPeople = async (req, res) => {
     }
     var data_people = {}
 
+    try{await sharp(req.files.imageprofile[0].path)
+      .resize(400, 400)
+     .jpeg({ quality: 50 })
+     .toFile(
+      path.resolve(req.files.imageprofile[0].destination,'resized',req.files.imageprofile[0].filename)
+
+     )
+     fs.unlinkSync(req.files.imageprofile[0].path)}catch(err){}
+    
+     try{await sharp(req.files.imagedriving[0].path)
+      // .resize(400, 650)
+     .jpeg({ quality: 50 })
+     .toFile(
+      path.resolve(req.files.imagedriving[0].destination,'resized',req.files.imagedriving[0].filename)
+
+     )
+     fs.unlinkSync(req.files.imagedriving[0].path)}catch(err){}
+      
     try {
       data_people = {
-        imageprofile: req.files.imageprofile[0].path,
-        imagedriving: req.files.imagedriving[0].path,
+        imageprofile: 'app\\images\\resized\\'+req.files.imageprofile[0].filename,
+        imagedriving: 'app\\images\\driving\\resized\\'+req.files.imagedriving[0].filename,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         phone: req.body.phone,
@@ -188,7 +208,7 @@ exports.createPeople = async (req, res) => {
     } catch (err) {
       try {
         data_people = {
-          imageprofile: req.files.imageprofile[0].path,
+          imageprofile: 'app\\images\\resized\\'+req.files.imageprofile[0].filename,
           firstname: req.body.firstname,
           lastname: req.body.lastname,
           phone: req.body.phone,
@@ -200,7 +220,7 @@ exports.createPeople = async (req, res) => {
       } catch (err) {
         try {
           data_people = {
-            imagedriving: req.files.imagedriving[0].path,
+            imagedriving: 'app\\images\\driving\\resized\\'+req.files.imagedriving[0].filename,
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             phone: req.body.phone,
@@ -309,11 +329,29 @@ exports.updateUser = async (req, res) => {
         return;
       }
 
+      try{await sharp(req.files.imageprofile[0].path)
+        .resize(400, 400)
+       .jpeg({ quality: 50 })
+       .toFile(
+        path.resolve(req.files.imageprofile[0].destination,'resized',req.files.imageprofile[0].filename)
+  
+       )
+       fs.unlinkSync(req.files.imageprofile[0].path)}catch(err){}
+      
+       try{await sharp(req.files.imagedriving[0].path)
+        // .resize(400, 650)
+       .jpeg({ quality: 50 })
+       .toFile(
+        path.resolve(req.files.imagedriving[0].destination,'resized',req.files.imagedriving[0].filename)
+  
+       )
+       fs.unlinkSync(req.files.imagedriving[0].path)}catch(err){}
+
 
       try {
         data_people = {
-          imageprofile: req.files.imageprofile[0].path,
-          imagedriving: req.files.imagedriving[0].path,
+          imageprofile: 'app\\images\\resized\\'+req.files.imageprofile[0].filename,
+        imagedriving: 'app\\images\\driving\\resized\\'+req.files.imagedriving[0].filename,
           firstname: req.body.firstname,
           lastname: req.body.lastname,
           phone: req.body.phone,
@@ -325,7 +363,7 @@ exports.updateUser = async (req, res) => {
       } catch (err) {
         try {
           data_people = {
-            imageprofile: req.files.imageprofile[0].path,
+            imageprofile: 'app\\images\\resized\\'+req.files.imageprofile[0].filename,
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             phone: req.body.phone,
@@ -337,7 +375,7 @@ exports.updateUser = async (req, res) => {
         } catch (err) {
           try {
             data_people = {
-              imagedriving: req.files.imagedriving[0].path,
+              imagedriving: 'app\\images\\driving\\resized\\'+req.files.imagedriving[0].filename,
               firstname: req.body.firstname,
               lastname: req.body.lastname,
               phone: req.body.phone,
