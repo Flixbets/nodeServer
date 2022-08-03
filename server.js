@@ -1,14 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-var corsOptions = {
-  origin: "http://localhost:3000"
-};
+var corsOptions = 
+"https://react-fontend-5c241.web.app";
+//"http://localhost:3000";
 // app.use(cors(corsOptions));
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(cors({credentials: true, origin: corsOptions}));
 // parse requests of content-type - application/json
 app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.static('public')); 
 app.use(express.urlencoded({ extended: true }));
 
 
@@ -75,29 +76,29 @@ function initial2() {
   SetStatus.create({
     status: "None"
   });
-  SetStatus.create({
-    status: "อยู่ระหว่างการยืนยันตัวตนกับเจ้าหน้าที่"
-  });
+  // SetStatus.create({
+  //   status: "อยู่ระหว่างการยืนยันตัวตนกับเจ้าหน้าที่"
+  // });
 
-  SetStatus.create({
-    status: "อยู่ระหว่างการชำระค่าใบขับขี่"
-  });
+  // SetStatus.create({
+  //   status: "อยู่ระหว่างการชำระค่าใบขับขี่"
+  // });
 
-  SetStatus.create({
-    status: "อยู่ระหว่างการชำระค่าใบอบรม"
-  });
+  // SetStatus.create({
+  //   status: "อยู่ระหว่างการชำระค่าใบอบรม"
+  // });
 
-  SetStatus.create({
-    status: "อยู่ระหว่างการชำระค่าคำขอออกบัตร"
-  });
+  // SetStatus.create({
+  //   status: "อยู่ระหว่างการชำระค่าคำขอออกบัตร"
+  // });
 
-  SetStatus.create({
-    status: "อยู่ระหว่างการชำระค่ามัดจำขนส่ง"
-  });
+  // SetStatus.create({
+  //   status: "อยู่ระหว่างการชำระค่ามัดจำขนส่ง"
+  // });
 
-  SetStatus.create({
-    status: "สินค้าถูกตีกลับ"
-  });
+  // SetStatus.create({
+  //   status: "สินค้าถูกตีกลับ"
+  // });
 
 }
 
