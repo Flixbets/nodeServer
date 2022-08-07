@@ -24,6 +24,9 @@ module.exports = (sequelize, Sequelize) => {
     use: {
       type: Sequelize.TINYINT,
     },
+    callback: {
+      type: Sequelize.TINYINT,
+    },
     imageprofile: {
       type: Sequelize.STRING
     },
