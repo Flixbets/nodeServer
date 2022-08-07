@@ -204,6 +204,7 @@ exports.createPeople = async (req, res) => {
         idcard: req.body.idcard,
         setstatusId: req.body.setstatusId,
         use: req.body.use,
+        callback:req.body.callback
       }
     } catch (err) {
       try {
@@ -216,6 +217,7 @@ exports.createPeople = async (req, res) => {
           idcard: req.body.idcard,
           setstatusId: req.body.setstatusId,
           use: req.body.use,
+          callback:req.body.callback
         }
       } catch (err) {
         try {
@@ -228,6 +230,7 @@ exports.createPeople = async (req, res) => {
             idcard: req.body.idcard,
             setstatusId: req.body.setstatusId,
             use: req.body.use,
+            callback:req.body.callback
           }
         } catch (err) {
           data_people = {
@@ -238,6 +241,7 @@ exports.createPeople = async (req, res) => {
             idcard: req.body.idcard,
             setstatusId: req.body.setstatusId,
             use: req.body.use,
+            callback:req.body.callback
           }
         }
 
@@ -359,6 +363,7 @@ exports.updateUser = async (req, res) => {
           idcard: req.body.idcard,
           setstatusId: req.body.setstatusId,
           use: req.body.use,
+          callback:req.body.callback
         }
       } catch (err) {
         try {
@@ -371,6 +376,7 @@ exports.updateUser = async (req, res) => {
             idcard: req.body.idcard,
             setstatusId: req.body.setstatusId,
             use: req.body.use,
+            callback:req.body.callback
           }
         } catch (err) {
           try {
@@ -383,6 +389,7 @@ exports.updateUser = async (req, res) => {
               idcard: req.body.idcard,
               setstatusId: req.body.setstatusId,
               use: req.body.use,
+              callback:req.body.callback
             }
           } catch (err) {
             data_people = {
@@ -393,6 +400,7 @@ exports.updateUser = async (req, res) => {
               idcard: req.body.idcard,
               setstatusId: req.body.setstatusId,
               use: req.body.use,
+              callback:req.body.callback
             }
           }
 
